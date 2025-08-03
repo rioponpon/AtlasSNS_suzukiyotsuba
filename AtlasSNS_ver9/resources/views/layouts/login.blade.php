@@ -31,7 +31,7 @@
   <!-- Page Content -->
   <div id="row">
     <div id="container">
-      {{ $slot }}
+    {{ $slot }}
     </div>
     <div id="side-bar">
       <div id="confirm">

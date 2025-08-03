@@ -16,7 +16,7 @@ use Illuminate\View\Component;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
+Route::get('/login', function () {
   return view('layouts.login');
 });
 
@@ -27,14 +27,16 @@ Route::get('/users', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('top', [PostsController::class, 'index']);
+Route::get('/login', [AuthenticatedSessionController::class, 'create']);
 
-Route::get('profile', [ProfileController::class, 'profile']);
+Route::get('/top', [PostsController::class, 'index']);
 
-Route::get('search', [UsersController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'profile']);
 
-Route::get('follow-list', [PostsController::class, 'index']);
-Route::get('follower-list', [PostsController::class, 'index']);
+Route::get('/search', [UsersController::class, 'index']);
+
+Route::get('/follow-list', [PostsController::class, 'index']);
+Route::get('/follower-list', [PostsController::class, 'index']);
 
 
-Route::get('users', [UsersController::class, 'users']);
+Route::get('/users', [UsersController::class, 'users']);
