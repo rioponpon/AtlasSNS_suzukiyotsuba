@@ -14,4 +14,8 @@ class loginLayout extends Component
     {
         return view('layouts.login');
     }
+    public function login(): View
+    {
+        return view('layouts.login');
+    }
 }

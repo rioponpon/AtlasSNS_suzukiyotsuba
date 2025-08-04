@@ -5,6 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
+use App\View\Components\LoginLayout;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +17,15 @@ use Illuminate\View\Component;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/login', function () {
-  return view('layouts.login');
-});
 
-Route::get('/users', function () {
-  return view('users');
-});
+// Route::get('/users', function () {
+//   return view('users.index');
+// });
 
 
 require __DIR__ . '/auth.php';
 
-Route::get('/login', [AuthenticatedSessionController::class, 'create']);
+Route::get('/login', [loginLayout::class, 'login']);
 
 Route::get('/top', [PostsController::class, 'index']);
 
@@ -37,6 +35,7 @@ Route::get('/search', [UsersController::class, 'index']);
 
 Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
+
 
 
 Route::get('/users', [UsersController::class, 'users']);
