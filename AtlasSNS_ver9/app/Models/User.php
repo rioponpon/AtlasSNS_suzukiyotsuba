@@ -32,4 +32,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function register(){
+        return $this->hasMany('App\Models\register');
+    }
 }

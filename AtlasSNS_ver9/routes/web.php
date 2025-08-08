@@ -38,4 +38,4 @@ Route::get('/follower-list', [PostsController::class, 'index']);
 
 
 
-Route::get('/users', [UsersController::class, 'users']);
+Route::get('/register', [UsersController::class, 'users']);
