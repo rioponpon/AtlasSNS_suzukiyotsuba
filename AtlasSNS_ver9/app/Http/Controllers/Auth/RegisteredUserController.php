@@ -36,11 +36,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('added');
+        return redirect() ->route('added')->with('username',$request->username);
     }
 
     public function added(): View
     {
-        return view('auth.added');
+        $username = session('username');
+        return view('auth.added',['username' => $username]);
     }
 }

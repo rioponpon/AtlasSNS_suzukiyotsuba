@@ -6,6 +6,8 @@ use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 use App\View\Components\LoginLayout;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,4 @@ Route::get('/search', [UsersController::class, 'index']);
 Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
 
-
-
-Route::get('/register', [UsersController::class, 'users']);
+Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');

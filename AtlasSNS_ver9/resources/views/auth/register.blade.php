@@ -13,12 +13,12 @@
 
 {!! Form::label('username','ユーザー名') !!}
     <div class ="form-group">
-{!! Form::text('UserName',null,[
+{!! Form::text('username',null,[
     'class' => 'input',
     'required' => true,
     'minlength' => 2,
     'maxlength' => 12,
-    'placeholder' => 'ユーザー名'
+    'placeholder' => 'ユーザー名',
     ]) !!}</div>
 
 {{ Form::label('メールアドレス') }}
@@ -27,7 +27,7 @@
     'required' => true,
     'minlength' => 5,
     'maxlength' => 40,
-    'email' => 'email:rfc,dns'
+    'email' => 'email:rfc,dns',
     ]) }}
 
 {{ Form::label('パスワード') }}
@@ -36,15 +36,16 @@
     'required' => true,
     'minlength'=> 8,
     'maxlength' => 20,
-    'password' => 'alpha_num:ascii'
+    'password' => 'alpha_num:ascii',
      ]) }}
 
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,[
-    'class' => 'input']) }}
+    'class' => 'input',
+    ]) }}
 
 {{ Form::submit('登録') }}
-<button type="submit" class="btn btn-success register-form">登録</button>
+
 
 <p><a href="login">ログイン画面へ戻る</a></p>
 

@@ -18,34 +18,36 @@ class UsersController extends Controller
     }
     public function registerForm()
     {
-        return view('registerForm');
+        return view('users.registerForm');
     }
 
     public function register(Request $request)
     {
         $request->validate([
-            'UserName' => ['required', 'string', 'min:2', 'max:12'],
+            'username' => ['required', 'string', 'min:2', 'max:12'],
             'email' => [
                 'required',//入力必須
-                'email:rfc,dns',//メールアドレス形式
+                'mail_address' => 'email',//メールアドレス形式
                 'min:5',//最低
                 'max:40',//最高
                 'unique:users,email',//登録ずみ不可
             ],
-            'password' => [
+            'Password' => [
                 'required',
                 'string',
                 'min:8',
                 'max:20',
                 'regex:/^[a-zA-Z0-9]+$/', // 英数字のみ
-                'confirmed',              // password_confirmation と一致しているか
+                'password' => 'confirmed:password',  // password_confirmation と一致しているか
             ],
         ]);
         User::create([
             'username' => $request->input('UserName'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
+            'MailAdress' => $request->input('email'),
+            'Password' => Hash::make($request->input('password')),
         ]);
+
+        // return request()=>route(request.)
         return back();
     }
     }
