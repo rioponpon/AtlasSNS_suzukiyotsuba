@@ -27,11 +27,31 @@
 <body>
   <header>
     @include('layouts.navigation')
+    <div id="head">
+      <h1><a href="{{ URL::to('/top') }}">
+        <img src="{{ asset('/images/logo.png') }}" alt="Atlas">
+      </a>
+    </h1>
+    <div class="side_user">
+      <div id="accordion" class="accordion_container">
+        <div class="accordion-title js-accordion-title">
+<p>{{ Auth::user()->username }} さん<img src="{{ asset('/images/arrow.png')}}"></p>
+
+
+<ul class="menu">
+<li><a class="home" href="{{ URL::to('/top') }}">ホーム</a></li>
+<li><a class="profile" href="{{ URL::to('/profile') }}">プロフィール</a></li>
+<li><a class="center" href="/logout">ログアウト</a></li>
+</ul>
+</div>
+      </div>
+    </div>
+    </div>
   </header>
   <!-- Page Content -->
   <div id="row">
     <div id="container">
-
+    {{ $slot }}
     </div>
     <div id="side-bar">
       <div id="confirm">
@@ -53,7 +73,7 @@
   <footer>
   </footer>
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="JavaScriptファイルのURL"></script>
 </body>
 

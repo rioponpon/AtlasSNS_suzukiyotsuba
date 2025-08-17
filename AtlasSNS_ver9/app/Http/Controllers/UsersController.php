@@ -42,7 +42,7 @@ class UsersController extends Controller
             ],
         ]);
         User::create([
-            'username' => $request->input('UserName'),
+            'username' => $request->input('username'),
             'MailAdress' => $request->input('email'),
             'Password' => Hash::make($request->input('password')),
         ]);
