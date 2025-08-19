@@ -35,7 +35,7 @@
     <div class="side_user">
       <div id="accordion" class="accordion_container">
         <div class="accordion-title js-accordion-title">
-<p>{{ Auth::user()->username }} さん<img src="{{ asset('/images/arrow.png')}}"></p>
+
 
 
 <ul class="menu">
@@ -74,7 +74,7 @@
   </footer>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src="JavaScriptファイルのURL"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

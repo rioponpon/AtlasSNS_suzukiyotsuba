@@ -29,8 +29,7 @@ require __DIR__ . '/auth.php';
 
 
 
-
-//Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/top', [PostsController::class, 'index']);
 
@@ -42,4 +41,6 @@ Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
 
 Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
-//});
+});
+
+Route::post('/logout', [LoginController::class 'logout'])->name('logout');

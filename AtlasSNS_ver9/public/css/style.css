@@ -9,9 +9,26 @@ header {
     background: #186AC9;
 }
 
-.accordion-title.menu {
-    margin: 0 auto;
+.accordion-title {
     display: block;
+    width: 70px;
+    height: 70px;
+    background-color: #000;
+}
+
+.accordion-title .menu {
+    margin: 0 auto;
+    display: none;
+}
+
+.accordion-title.open .menu {
+    display: block;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    z-index: 1;
 }
 
 /* main content */

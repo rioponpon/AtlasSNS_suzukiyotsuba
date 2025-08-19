@@ -13,4 +13,11 @@ class FollowsController extends Controller
     public function followerList(){
         return view('follows.followerList');
     }
+
+
+public function show()
+{
+    $posts = post::get();
+    return view('follows.followlist', compact('posts'));
+}
 }
