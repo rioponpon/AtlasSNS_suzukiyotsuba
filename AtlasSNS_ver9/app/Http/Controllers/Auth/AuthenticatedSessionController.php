@@ -32,4 +32,10 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended('top');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return redirect('/login');
+    }
 }

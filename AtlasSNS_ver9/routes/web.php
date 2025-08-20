@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 use App\View\Components\LoginLayout;
 use App\Http\Controllers\Auth\RegisteredUserController;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,7 @@ require __DIR__ . '/auth.php';
 
 
 
+
 Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/top', [PostsController::class, 'index']);
@@ -43,4 +44,4 @@ Route::get('/follower-list', [PostsController::class, 'index']);
 Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 });
 
-Route::post('/logout', [LoginController::class 'logout'])->name('logout');
+Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
