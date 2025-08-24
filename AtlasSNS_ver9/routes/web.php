@@ -42,6 +42,13 @@ Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
 
 Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
+
+Route::post('/top', [PostsController::class, 'postCreate']);
+Route::post('/top', [PostsController::class, 'index']); //投稿処理
+
+Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+
 });
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
