@@ -3,25 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
     //
     public function index(){
-        return view('posts.index');
+        $list=Post::get();
+        return view('posts.index',['list'=>$list]);
     }
 
     public function postCreate(Request $request){
         $request->validate([
-            'newpost' => 'required|string|max:255',
+            'newpost' => 'required|string|min:1|max:150',
         ]);
-        $post=$request->input('newpost');
-        $user_id=Auth::user()->id;
-        // dd($user_id);
-        Post::create([
-            'user_id'=>$user_id,
-            'post'=>$post,
-        ]);
+      Post::create([
+
+        'user_id' => Auth::id(),
+        'post' => $request->input('newpost'),
+
+      ]);
         return redirect('/top');
     }
 }

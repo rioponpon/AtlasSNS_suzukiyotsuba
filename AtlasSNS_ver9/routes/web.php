@@ -9,6 +9,7 @@ use App\View\Components\LoginLayout;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,11 +44,9 @@ Route::get('/follower-list', [PostsController::class, 'index']);
 
 Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 
-Route::post('/top', [PostsController::class, 'postCreate']);
-Route::post('/top', [PostsController::class, 'index']); //投稿処理
 
-Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
-Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
+Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
 });
 
