@@ -48,6 +48,9 @@ Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
+Route::post('/post/update', [PostsController::class, 'postUpdate']);
+
+Route::post('/post/delete', [PostsController::class, 'postDelete']);
 });
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');

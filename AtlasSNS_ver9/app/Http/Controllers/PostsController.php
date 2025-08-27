@@ -11,11 +11,11 @@ class PostsController extends Controller
 {
     //
     public function index(){
-        $list=Post::get();
-        return view('posts.index',['list'=>$list]);
+        $posts=Post::get();
+        return view('posts.index',['posts'=>$posts]);
     }
 
-    public function postCreate(Request $request){
+    public function postCreate(Request $request){//投稿作成
         $request->validate([
             'newpost' => 'required|string|min:1|max:150',
         ]);
@@ -25,6 +25,23 @@ class PostsController extends Controller
         'post' => $request->input('newpost'),
 
       ]);
+        return redirect('/top');
+    }
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        $user_id = Auth::id();
+
+        Post::where('id',$id)->update([
+            'post' => $up_post,
+        ]);
+        return redirect('/top');
+    }
+
+    public function delete($id){
+
+        Post::where('id',$id)->delete();
         return redirect('/top');
     }
 }

@@ -18,18 +18,37 @@
 {!! Form::close()!!}
 </div>
 
-{[-- 投稿一覧 --]}
+{{-- 投稿一覧 --}}
 <div class ="mt-5">
   <h3>投稿一覧</h3>
-  @forelse ($posts as $posts)
+  @forelse ($posts as $post)
   <div class="card mb-3">
 <div class="card-body">
   <p>{{ $post->post }}</p>
+  <!--編集-->
+  @if(Auth::id() ==$post->user_id)
+  <div class="update-btn">
+    <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+      <img class="Update" src="./images/edit.png" alt="編集" />
+  </a>
+  </div>
+  @else
+  <td class="post-cell"></td>
+  @endif
+<!--削除-->
+@if(Auth::id() == $post->user_id)
+<div class="post-cell">
+  <div class="delete-btn">
+    <a href="/post/{{ $post->id }}/delete" onclick="return confilm('この投稿を削除します。よろしいでしょうか？')">
+      <img class="Trash" src="./images/trash.png" alt="削除" />
+  </a>
+  </div>
+</div>
 </div>
   </div>
   @empty
+  <p>投稿はありません</p>
   @endforelse
   </div>
-</x-login-layout>
 
 </x-login-layout>
