@@ -36,4 +36,9 @@ class User extends Authenticatable
     public function register(){
         return $this->hasMany('App\Models\register');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
 }

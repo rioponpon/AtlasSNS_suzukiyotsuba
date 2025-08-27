@@ -45,3 +45,17 @@ header {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+.Trash {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.Update {
+    height: 35px;
+    top: 10px;
+    margin-left: flex;
+    align-items: center;
+}

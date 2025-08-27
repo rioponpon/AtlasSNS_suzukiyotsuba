@@ -21,7 +21,7 @@
 {{-- 投稿一覧 --}}
 <div class ="mt-5">
   <h3>投稿一覧</h3>
-  @forelse ($posts as $post)
+  @foreach ($posts as $post)
   <div class="card mb-3">
 <div class="card-body">
   <p>{{ $post->post }}</p>
@@ -39,16 +39,29 @@
 @if(Auth::id() == $post->user_id)
 <div class="post-cell">
   <div class="delete-btn">
-    <a href="/post/{{ $post->id }}/delete" onclick="return confilm('この投稿を削除します。よろしいでしょうか？')">
+    <a href="/post/{{ $post->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
       <img class="Trash" src="./images/trash.png" alt="削除" />
   </a>
   </div>
 </div>
+@endif
 </div>
   </div>
-  @empty
-  <p>投稿はありません</p>
-  @endforelse
+
+  @endforeach
   </div>
+<!--編集画面-->
+<div class="modal js-modal">
+  <div class="modal_bg js-modal-close"></div>
+  <div class="modal_content">
+    <from action="/post/update" method="post">
+      <textarea name="update" class="modal_post"></textarea>
+      <input type="hidden" name="id" class="modal_id" value="">
+      <input type="submit" value="更新">
+      {{ csrf_field() }}
+    </from>
+    <a class="js-modal-close" href="">閉じる</a>
+  </div>
+</div>
 
 </x-login-layout>
