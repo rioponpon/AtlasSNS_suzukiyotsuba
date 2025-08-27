@@ -28,9 +28,9 @@
   <!--編集-->
   @if(Auth::id() ==$post->user_id)
   <div class="update-btn">
-    <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
+    <!-- <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}"> -->
       <img class="Update" src="./images/edit.png" alt="編集" />
-  </a>
+  <!-- </a> -->
   </div>
   @else
   <td class="post-cell"></td>

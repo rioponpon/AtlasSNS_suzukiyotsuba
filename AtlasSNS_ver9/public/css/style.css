@@ -59,3 +59,12 @@ header {
     margin-left: flex;
     align-items: center;
 }
+
+.modal {
+    margin: 0 auto;
+    display: none;
+}
+
+.modal.open {
+    display: block;
+}
