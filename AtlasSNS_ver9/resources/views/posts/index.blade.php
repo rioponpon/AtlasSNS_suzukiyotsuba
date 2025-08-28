@@ -25,6 +25,12 @@
   <div class="card mb-3">
 <div class="card-body">
   <p>{{ $post->post }}</p>
+  <small>投稿日: {{ $post->created_at->format('Y-m-d H:i') }}</small>
+    <!-- ユーザーのアイコン !-->
+    <div class="post-cell">
+    <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
+    alt="{{ $post->user->username }}">
+  </div>
   <!--編集-->
   @if(Auth::id() ==$post->user_id)
   <div class="update-btn">

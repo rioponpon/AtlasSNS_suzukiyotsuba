@@ -46,6 +46,11 @@ header {
     border-left: 1px solid #727272;
 }
 
+.submit {
+    vertical-align: middle;
+    width: 30px;
+}
+
 .Trash {
     width: 30px;
     height: auto;
