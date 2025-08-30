@@ -14,7 +14,7 @@
     'maxlength' => '150'
     ])}}
 </div>
-<button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="送信"></button>
+<button type="submit" class="btn btn-success pull-right"><img class="Upload"src="images/post.png" alt="送信"></button>
 {!! Form::close()!!}
 </div>
 

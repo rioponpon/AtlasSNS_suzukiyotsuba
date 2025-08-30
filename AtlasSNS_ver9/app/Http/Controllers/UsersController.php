@@ -10,9 +10,9 @@ use App\Models\register;
 class UsersController extends Controller
 {
     //
-    public function search(){
-        return view('users.search');
-    }
+    // public function search(){
+    //     return view('users.search');
+    // }
     public function users(){
         return view('users.search');
     }
@@ -50,4 +50,27 @@ class UsersController extends Controller
         // return request()=>route(request.)
         return back();
     }
+
+    public function search(){
+        $user = User::paginate(20);
+
+       return view('users.search')->with([
+'users'=>$users,
+'keyword'=>$keyword
+]);
     }
+
+    public function getIndex(Request $rq){
+    $keyword = $rq->input('search');
+    $query = \App\Student::query();
+
+    if(!empty($search)){
+        $query->orWhere('name','like','%'.$search.'%');
+    }
+
+    }
+     public function index()
+    {
+        return view('users.index');
+    }
+}

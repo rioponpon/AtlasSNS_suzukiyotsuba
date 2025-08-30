@@ -9,6 +9,7 @@ header {
     background: #186AC9;
 }
 
+/* アコーディオンメニュー */
 .accordion-title {
     display: block;
     width: 70px;
@@ -31,6 +32,9 @@ header {
     z-index: 1;
 }
 
+
+
+
 /* main content */
 #row {
     display: flex;
@@ -51,6 +55,33 @@ header {
     width: 30px;
 }
 
+.post-cell {
+    position: relative;
+}
+
+/*投稿*/
+.card-body {
+    padding: 10px;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    position: relative;
+}
+
+/*削除ボタン*/
+.delete-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.update-btn {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    z-index: 2;
+}
+
 .Trash {
     width: 30px;
     height: auto;
@@ -61,15 +92,39 @@ header {
 .Update {
     height: 35px;
     top: 10px;
-    margin-left: flex;
+    margin-left: 50px;
+    display: flex;
     align-items: center;
 }
 
+.Upload {
+    background: #fff;
+    height: 95px;
+    margin-top: 90px;
+}
+
+.send-btn {
+    background: #fff;
+    border: none;
+}
+
 .modal {
-    margin: 0 auto;
     display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .modal.open {
     display: block;
+}
+
+
+.post-cell {
+    position: relative;
+}
+
+.login {
+    background: linear-gradient(#007Bff, #FFD700);
 }
