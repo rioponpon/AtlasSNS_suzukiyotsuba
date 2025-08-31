@@ -6,6 +6,7 @@ body {}
 
 /* header */
 header {
+    padding: 10px;
     background: #186AC9;
 }
 
@@ -87,6 +88,10 @@ header {
     height: auto;
     cursor: pointer;
     transition: .3s;
+}
+
+.Trash:hover {
+    background-image: url('images/trash-h.png');
 }
 
 .Update {
