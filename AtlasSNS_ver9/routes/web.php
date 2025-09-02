@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 use App\View\Components\LoginLayout;
@@ -37,12 +38,17 @@ Route::get('/top', [PostsController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'profile']);
 
-Route::get('/search', [UsersController::class, 'index'])->name('search.index');
-Route::get('/search', [UsersController::class, 'index'])->name('users.index');
+
+//Route::get('/search', [UsersController::class, 'index'])->name('search.index');
+Route::get('/search', [UsersController::class, 'search'])->name('users.index');
+
 
 
 Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
+
+Route::get('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');
+Route::get('/unfollow/{user}', [FollowsController::class, 'unfollow'])->name('unfollow');
 
 Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 

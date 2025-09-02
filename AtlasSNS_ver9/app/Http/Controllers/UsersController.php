@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\register;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -51,14 +52,14 @@ class UsersController extends Controller
         return back();
     }
 
-    public function search(){
-        $user = User::paginate(20);
+//     public function search(){
+//         $users = User::paginate(20);
 
-       return view('users.search')->with([
-'users'=>$users,
-'keyword'=>$keyword
-]);
-    }
+//        return view('users.search')->with([
+// 'users'=>$users,
+// // 'keyword'=>$keyword
+// ]);
+//     }
 
     public function getIndex(Request $rq){
     $keyword = $rq->input('search');
@@ -70,7 +71,25 @@ class UsersController extends Controller
 
     }
      public function index()
+    {$users = User::paginate(20);
+
+       return view('users.search')->with([
+'users'=>$users,
+// 'keyword'=>$keyword
+]);
+    }
+
+    public function search(Request $request)
     {
-        return view('users.index');
+        // 1つ目の処理
+        $keyword = $request->input('search');
+        // 2つ目の処理
+        if(!empty($keyword)){
+             $users = User::where('username','like', '%'.$keyword.'%')->get();
+        }else{
+             $users = User::all();
+        }
+        // 3つ目の処理
+        return view('users.search',['users'=>$users]);
     }
 }

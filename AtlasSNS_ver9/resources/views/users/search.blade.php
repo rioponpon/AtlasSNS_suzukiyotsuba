@@ -1,31 +1,39 @@
 <x-login-layout>
 
-<form action="{{ route('users.search') }}" method="post">
+<form action="/search" method="get">
             <input type="search" name="search" placeholder="ユーザー名を入力" value="@if (isset($search)) {{ $search }} @endif">
 
-            <img class="search" src="./images/AtlasSNS_ver9/public/images/search.png." alt="検索" />
+            <img class="search" src="./images/search.png." alt="検索" />
         </form>
+
         <!-- 検索ワードを表示 -->
-         @if (!empty($keyword))
-         <p>検索ワード:{{$keyword}}</p>
-         @endif
+         <!-- if (!empty($keyword))
+         <p>検索ワード:{$keyword}</p>
+         endif -->
 
-         @section('content')
-         {!! From::open(['method' => 'GET'])!!}
-         {!! From::text('search' null,['placeholder' => 'ユーザー名'])!!}
-         {!! From::submit('検索') !!}
-         @if(isset($search))
-
-         <td>検索したワード : {{ $request->input('search') }}</td>
-         @else
-         <td></td>
-         @endif
-         {!! From::close() !!}
 
          @foreach($users as $user)
+
+         @if(isset($user)and!(Auth::user()==$user))
          <tr>
 
-        <td>({{ $user->image }})<td></td>{{{ $user->username }}}
+        <td><img src="{{ $user->image }}"><td>
+        </td>{{{ $user->username }}}
          </tr>
-         @endsection
+@endif
+
+    @csrf
+    <input type="hidden" name="user_id" value="{{ $user->username }}">
+        @if (auth()->user()->isFollowing($user->id))
+        <button type="submit" class="btn-primary">
+        <a href="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">フォロー解除</a>
+</button>
+        @else
+        <button type="submit" class="btn-primary">
+        <a href="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">フォローする</a>
+        </button>
+        @endif
+
+
+         @endforeach
 </x-login-layout>

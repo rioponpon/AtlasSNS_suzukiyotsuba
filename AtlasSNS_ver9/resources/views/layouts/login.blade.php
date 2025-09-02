@@ -67,7 +67,7 @@
         </div>
         <p class="btn"><a href="">フォロワーリスト</a></p>
       </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
+      <p class="btn"><a href="{{ URL::to('/search') }}">ユーザー検索</a></p>
     </div>
   </div>
   <footer>
