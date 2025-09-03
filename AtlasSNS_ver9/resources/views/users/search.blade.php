@@ -26,11 +26,11 @@
     <input type="hidden" name="user_id" value="{{ $user->username }}">
         @if (auth()->user()->isFollowing($user->id))
         <button type="submit" class="btn-primary">
-        <a href="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">フォロー解除</a>
+        <form action="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">フォロー解除</form>
 </button>
         @else
         <button type="submit" class="btn-primary">
-        <a href="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">フォローする</a>
+        <form action="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">フォローする</form>
         </button>
         @endif
 

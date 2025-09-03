@@ -38,7 +38,7 @@ public function unfollow($user)
         ])
         ->delete();
         }
-    return redirect('/search');
+    return back('/search');
 }
 
 public function follow(User $user)
@@ -46,7 +46,7 @@ public function follow(User $user)
  $follower =auth()->user();
     $is_following = $follower->isFollowing($user);
 
-    if($is_following){
+    if(! $is_following){
         $loggedInUserId = auth()->user()->id;
 
         $followedUser = User::find($user);
@@ -56,7 +56,7 @@ public function follow(User $user)
             'following_id' => $loggedInUserId,
             'followed_id' => $followedUserId,
         ]);
-        return redirect('/search');
+        return back('/search');
     }
 }
 public function followList(){
