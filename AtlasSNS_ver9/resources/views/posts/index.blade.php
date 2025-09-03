@@ -28,9 +28,15 @@
   <small>投稿日: {{ $post->created_at->format('Y-m-d H:i') }}</small>
     <!-- ユーザーのアイコン !-->
     <div class="post-cell">
-    <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
+      @if($post->user->images === 'icon1.png')
+      <img class ="MyIcon"src="{{ asset('user-images/icon1.png') }}"
+    alt="{{ $post->user->username }}">
+
+    @else
+     <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
     alt="{{ $post->user->username }}">
   </div>
+  @endif
   <!--編集-->
   @if(Auth::id() ==$post->user_id)
   <div class="update-btn">
