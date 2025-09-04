@@ -18,20 +18,28 @@
          <tr>
 
         <td><img src="{{ $user->image }}"><td>
-        </td>{{{ $user->username }}}
-         </tr>
-@endif
+        </td>
+        <td>{{{ $user->username }}}
+</td>
+        <td>
 
     @csrf
     <input type="hidden" name="user_id" value="{{ $user->username }}">
         @if (auth()->user()->isFollowing($user->id))
-        <button type="submit" class="btn-primary">
-        <form action="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">フォロー解除</form>
-</button>
+        <form action="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">
+@csrf
+        <button type="submit" class="btn-primary">フォロー解除</button>
+        </form>
+
         @else
-        <button type="submit" class="btn-primary">
-        <form action="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">フォローする</form>
-        </button>
+
+        <form action="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">
+            @csrf
+             <button type="submit" class="btn-primary"> フォローする</button>
+        </form>
+        @endif
+</td>
+        </tr>
         @endif
 
 
