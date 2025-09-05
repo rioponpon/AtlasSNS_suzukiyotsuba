@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Follow;
 
 class FollowsController extends Controller
 {
@@ -49,8 +50,8 @@ public function follow(User $user)
     if(! $is_following){
         $loggedInUserId = auth()->user()->id;
 
-        $followedUser = User::find($user);
-        $followedUserId = $followedUser->id;
+        // $followedUser = $user->id;
+        // $followedUserId = $followedUser->id;
 
         Follow::create([
             'following_id' => $loggedInUserId,

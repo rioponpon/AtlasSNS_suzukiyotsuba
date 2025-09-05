@@ -17,7 +17,7 @@
          @if(isset($user)and!(Auth::user()==$user))
          <tr>
 
-        <td><img src="{{ $user->image }}"><td>
+        <td><img src="{{ $user->images }}"><td>
         </td>
         <td>{{{ $user->username }}}
 </td>

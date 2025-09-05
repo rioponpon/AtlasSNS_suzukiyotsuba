@@ -28,7 +28,7 @@
   <small>投稿日: {{ $post->created_at->format('Y-m-d H:i') }}</small>
     <!-- ユーザーのアイコン !-->
     <div class="post-cell">
-      @if($post->user->images === 'icon1.png')
+      @if($post->user->icon_image === 'icon1.png')
       {{-- デフォルトアイコン(public/images/icon1.png) --}}
       <img class ="MyIcon"src="{{ asset('images/icon1.png') }}"
     alt="{{ $post->user->username }}">
