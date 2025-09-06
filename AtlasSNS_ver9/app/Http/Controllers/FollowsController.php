@@ -32,14 +32,15 @@ public function unfollow($user)
     if ($is_following){
 
         $loggedInUserId = auth()->user()->id;
+         $followedUserId = $user->id;
 
         Follow::where([
-            ['followed_id', "=",$userid],
-            ['following_id', '=', $loggedInUserId],
+            ['followed_id' =>$followedUserId],
+            ['following_id' => $loggedInUserId],
         ])
         ->delete();
         }
-    return back('/search');
+    return back();
 }
 
 public function follow(User $user)
@@ -50,14 +51,14 @@ public function follow(User $user)
     if(! $is_following){
         $loggedInUserId = auth()->user()->id;
 
-        // $followedUser = $user->id;
-        // $followedUserId = $followedUser->id;
+         $followedUserId = $user->id;
+        //  $followedUserId = $followedUser->id;
 
         Follow::create([
             'following_id' => $loggedInUserId,
             'followed_id' => $followedUserId,
         ]);
-        return back('/search');
+        return back();
     }
 }
 public function followList(){
