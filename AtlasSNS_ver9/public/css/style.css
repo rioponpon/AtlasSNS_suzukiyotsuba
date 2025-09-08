@@ -10,6 +10,7 @@ header {
     background: #186AC9;
 }
 
+
 /* アコーディオンメニュー */
 .accordion-title {
     display: block;
@@ -68,6 +69,7 @@ header {
     justify-content: space-between;
     position: relative;
 }
+
 
 /*削除ボタン*/
 .delete-btn {
@@ -128,8 +130,4 @@ header {
 
 .post-cell {
     position: relative;
-}
-
-.login {
-    background: linear-gradient(#007Bff, #FFD700);
 }

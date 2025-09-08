@@ -23,11 +23,13 @@ public function show()
     return view('follows.followlist', compact('posts'));
 }
 
-public function unfollow($user)
+public function unfollow(User $user)
 {
     //フォローしているのか
+
     $follower =auth()->user();
-    $is_following = $follower->isFollowing($user);
+    $is_following = $follower->isFollowed($user);
+dd($is_following);
 
     if ($is_following){
 
@@ -52,7 +54,6 @@ public function follow(User $user)
         $loggedInUserId = auth()->user()->id;
 
          $followedUserId = $user->id;
-        //  $followedUserId = $followedUser->id;
 
         Follow::create([
             'following_id' => $loggedInUserId,

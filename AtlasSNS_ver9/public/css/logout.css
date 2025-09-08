@@ -13,16 +13,32 @@ body {
     width: 400px;
     margin: 100px auto;
     padding: 20px;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     text-align: center;
+    color: #fff;
+}
+
+.register-btn {
+    color: red;
 }
 
 .login {
     width: 400px;
     margin: 100px auto;
     padding: 20px;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     text-align: center;
+    color: #fff;
+
+}
+
+.login-btn {
+    color: red;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
 }
