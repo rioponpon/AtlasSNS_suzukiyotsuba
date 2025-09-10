@@ -51,9 +51,9 @@ class User extends Authenticatable
     public function isFollowing($user_id){
         return (bool)$this->follows()->where('followed_id',$user_id)->exists();
     }
-    public function isFollowed($user_id){
-        return (bool)$this->follows()->where('following_id',$user_id)->exists();
-    }
+     public function isFollowed($user_id){
+         return (bool)$this->follower()->where('following_id',$user_id)->exists();
+     }
 
     public function follows(){
         return $this->belongsToMany('App\Models\User', 'follows', 'following_id', 'followed_id');

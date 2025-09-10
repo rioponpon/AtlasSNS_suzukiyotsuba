@@ -47,6 +47,8 @@ Route::get('/search', [UsersController::class, 'search'])->name('users.index');
 Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
 
+Route::get('/follow-list', [FollowsController::class, 'followList']);
+
 Route::get('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');
 Route::get('/unfollow/{user}', [FollowsController::class, 'unfollow'])->name('unfollow');
 
@@ -56,7 +58,13 @@ Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
-//編集画面表示
+
+// Route::get('/top', [FollowsController::class, 'follows']);
+// Route::post('/top', [FollowsController::class, 'follows']);
+// Route::get('/top', [FollowsController::class, 'followers']);
+// Route::post('/top', [FollowsController::class, 'followers']);
+
+
 Route::get('/post/{id}/update-form', [PostsController::class, 'updateForm']);
 //編集処理
 Route::post('/post/update', [PostsController::class, 'update']);

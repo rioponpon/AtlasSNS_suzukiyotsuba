@@ -40,4 +40,14 @@ public function followings()
     {
         return $this->following()->where('following_id',$data->id)->exists();
     }
+
+    public function getFollowCount($user_id)
+    {
+        return $this->following()->where('following_id',$user_id)->count();
+    }
+
+     public function getFollowerCount($user_id)
+    {
+        return $this->following()->where('followed_id',$user_id)->count();
+    }
 }
