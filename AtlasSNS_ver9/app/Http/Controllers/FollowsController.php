@@ -14,9 +14,9 @@ class FollowsController extends Controller
     // public function followList(){
     //     return view('follows.followList');
     // }
-    public function followerList(){
-        return view('follows.followerList');
-    }
+    // public function followerList(){
+    //     return view('follows.followerList');
+    // }
 
 
 public function show()
@@ -84,6 +84,19 @@ public function followList()
     }
 
 
+    public function followerList()
+    {
+        // フォローしているユーザーのidを取得
+       $follower_id = Auth::user()->followers()->pluck('following_id');
+
+         $followers = User::whereIn('id', $follower_id)->get();
+        // dd($following_id);
+        return view('/follows/followList' , ['followers' => $followers]);
+    }
+
+
+
+
 
 //  public function followList()
 //     {
@@ -98,5 +111,14 @@ public function followList()
 //  public function followerList(){
 //      return view('follows.followerList');
 //  }
+
+public function follows(){
+return $this->belongsToMany(User::class,'follows','following_id','followed_id');
+}
+// フォロワー数
+public function followers(){
+    return $this->belongsToMany(User::class,'follows','followed_id','following_id');
+
+}
 
 }

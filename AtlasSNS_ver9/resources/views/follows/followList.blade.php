@@ -13,7 +13,7 @@
 
 @foreach($posts as $post)
     <p>名前:{{ $post->user->username }}</p>
-    <p>投稿内容:{{ $post->post }}</p>
+    <p>投稿内容:{{ $posts->post }}</p>
 @endforeach
 @endsection
 </x-login-layout>

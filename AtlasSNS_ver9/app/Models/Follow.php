@@ -50,4 +50,13 @@ public function followings()
     {
         return $this->following()->where('followed_id',$user_id)->count();
     }
+
+public function follower()
+    {
+        return $this->belongsToMany(User::class,'follower_id');
+    }
+    public function followed()
+    {
+        return $this->belongsToMany( User::class,'followed_id');
+    }
 }

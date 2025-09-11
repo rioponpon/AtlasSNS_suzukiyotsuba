@@ -92,4 +92,14 @@ class UsersController extends Controller
         // 3つ目の処理
         return view('users.search',['users'=>$users]);
     }
+
+    public function followList()
+    {
+        // フォローしているユーザーのidを取得
+       $following_id = Auth::user()->follows()->pluck('followed_id');
+
+         $followings = User::whereIn('id', $following_id)->get();
+        // dd($following_id);
+        return view('/follows/followList' , ['followings' => $followings]);
+    }
 }

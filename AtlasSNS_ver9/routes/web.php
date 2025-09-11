@@ -48,6 +48,7 @@ Route::get('/follow-list', [PostsController::class, 'index']);
 Route::get('/follower-list', [PostsController::class, 'index']);
 
 Route::get('/follow-list', [FollowsController::class, 'followList']);
+Route::get('/follower-list', [FollowsController::class, 'followerList']);
 
 Route::get('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');
 Route::get('/unfollow/{user}', [FollowsController::class, 'unfollow'])->name('unfollow');
@@ -59,10 +60,11 @@ Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
 
-// Route::get('/top', [FollowsController::class, 'follows']);
-// Route::post('/top', [FollowsController::class, 'follows']);
-// Route::get('/top', [FollowsController::class, 'followers']);
-// Route::post('/top', [FollowsController::class, 'followers']);
+ Route::get('/top', [FollowsController::class, 'follows']);
+ Route::post('/top', [FollowsController::class, 'follows']);
+ Route::get('/top', [FollowsController::class, 'followers']);
+ Route::post('/top', [FollowsController::class, 'followers']);
+
 
 
 Route::get('/post/{id}/update-form', [PostsController::class, 'updateForm']);
