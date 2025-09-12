@@ -5,8 +5,8 @@
 <div class="list">
     <h1>[ フォロワーリスト ]</h1>
     <div class="follow_icon">
-        @foreach ($followers as $following)
-        <a><img src="{{ asset('storage/' .$following->images) }}" alt="フォロワーアイコン"></a>
+        @foreach ($followers as $follower)
+        <a><img src="{{ asset('storage/' .$follower->images) }}" alt="フォロワーアイコン"></a>
         @endforeach
     </div>
 </div>
@@ -15,6 +15,6 @@
     <p>名前:{{ $post->user->username }}</p>
     <p>投稿内容:{{ $post->post }}</p>
 @endforeach
-@endsection
+
 
 </x-login-layout>

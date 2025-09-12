@@ -60,10 +60,7 @@ Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
 
- Route::get('/top', [FollowsController::class, 'follows']);
- Route::post('/top', [FollowsController::class, 'follows']);
- Route::get('/top', [FollowsController::class, 'followers']);
- Route::post('/top', [FollowsController::class, 'followers']);
+
 
 
 

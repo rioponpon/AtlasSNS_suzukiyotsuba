@@ -78,20 +78,26 @@ public function followList()
         // フォローしているユーザーのidを取得
        $following_id = Auth::user()->follows()->pluck('followed_id');
 
-         $followings = User::whereIn('id', $following_id)->get();
+         $follows = User::whereIn('id', $following_id)->get();
         // dd($following_id);
-        return view('/follows/followList' , ['followings' => $followings]);
+        $posts = Post::with('user')->whereIn('user_id',$following_id)->latest()->get();
+
+return view('follows.followList', ['posts' => $posts, 'follows' => $follows]);
+
     }
 
 
     public function followerList()
     {
-        // フォローしているユーザーのidを取得
-       $follower_id = Auth::user()->followers()->pluck('following_id');
+        // フォローされているユーザーのidを取得
+       $follower_id = Auth::user()->follows()->pluck('following_id');
 
-         $followers = User::whereIn('id', $follower_id)->get();
+         $follower = User::whereIn('id', $follower_id)->get();
         // dd($following_id);
-        return view('/follows/followList' , ['followers' => $followers]);
+        $posts = Post::with('user')->whereIn('user_id',$follower_id)->latest()->get();
+
+return view('follows.followerList', ['posts' => $posts, 'followers' => $follower]);
+
     }
 
 
@@ -112,13 +118,6 @@ public function followList()
 //      return view('follows.followerList');
 //  }
 
-public function follows(){
-return $this->belongsToMany(User::class,'follows','following_id','followed_id');
-}
-// フォロワー数
-public function followers(){
-    return $this->belongsToMany(User::class,'follows','followed_id','following_id');
 
-}
 
 }

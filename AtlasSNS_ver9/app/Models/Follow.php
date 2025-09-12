@@ -38,18 +38,9 @@ public function followings()
 
     public function isFollowing()
     {
-        return $this->following()->where('following_id',$data->id)->exists();
+        return $this->followings()->where('following_id',$data->id)->exists();
     }
 
-    public function getFollowCount($user_id)
-    {
-        return $this->following()->where('following_id',$user_id)->count();
-    }
-
-     public function getFollowerCount($user_id)
-    {
-        return $this->following()->where('followed_id',$user_id)->count();
-    }
 
 public function follower()
     {
@@ -58,5 +49,15 @@ public function follower()
     public function followed()
     {
         return $this->belongsToMany( User::class,'followed_id');
+    }
+
+    public function followList(){
+      $user = auth()->user();
+      $following_id = $user->following()->pluck($data->id);
+
+     $posts=Post::get();
+
+     $followings = $user->following;
+     return view('follows.followList', compact('posts','followings'));
     }
 }
