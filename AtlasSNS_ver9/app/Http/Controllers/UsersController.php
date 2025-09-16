@@ -102,4 +102,18 @@ class UsersController extends Controller
         // dd($following_id);
         return view('/follows/followList' , ['followings' => $followings]);
     }
+
+   public function show($id){
+       $user = User::findOrFail($id);
+       $posts = $user->posts()->orderBy('created_at','desc')->get();
+    //    dd($user,$posts);
+
+       return view('profiles.profile',compact('user','posts'));
+    }
+
+    public function profile($id){
+        $posts = $user->posts()->orderBy('created_at','desc')->get();
+
+        return view('profiles.profile',compact('user','posts'));
+    }
 }

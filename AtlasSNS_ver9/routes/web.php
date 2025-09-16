@@ -38,6 +38,8 @@ Route::get('/top', [PostsController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'profile']);
 
+Route::get('users/{id}/profile', [UsersController::class, 'show'])->name('profile');
+
 
 //Route::get('/search', [UsersController::class, 'index'])->name('search.index');
 Route::get('/search', [UsersController::class, 'search'])->name('users.index');
