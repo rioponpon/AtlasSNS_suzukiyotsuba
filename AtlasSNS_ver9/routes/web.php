@@ -38,7 +38,7 @@ Route::get('/top', [PostsController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'profile']);
 
-Route::get('users/{id}/profile', [UsersController::class, 'show'])->name('profile');
+Route::get('users/{id}/profile', [UsersController::class, 'show'])->name('users.show');
 
 
 //Route::get('/search', [UsersController::class, 'index'])->name('search.index');
@@ -62,8 +62,9 @@ Route::get('/top', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create');
 
 
-
-
+Route::get('/profile/{id}/update-form', [UsersController::class, 'profileUpdate']);
+//編集処理
+Route::post('/profile/update', [UsersController::class, 'profileUpdate']);
 
 
 Route::get('/post/{id}/update-form', [PostsController::class, 'updateForm']);

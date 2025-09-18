@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\register;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -44,7 +45,7 @@ class UsersController extends Controller
         ]);
         User::create([
             'username' => $request->input('username'),
-            'MailAdress' => $request->input('email'),
+            'email' => $request->input('email'),
             'Password' => Hash::make($request->input('password')),
         ]);
 
@@ -115,5 +116,44 @@ class UsersController extends Controller
         $posts = $user->posts()->orderBy('created_at','desc')->get();
 
         return view('profiles.profile',compact('user','posts'));
+    }
+    public function profileUpdate(Request $request)
+    {
+        $id = $request->input('id');
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password =$request->input('password');
+        $bio =$request->input('bio');
+        // dd($id,$username,$mail);
+
+       $request->validate([
+            'username' => ['required', 'string', 'min:2', 'max:12'],
+            'email' => [
+                'required',//入力必須
+                'mail_address' => 'email',//メールアドレス形式
+                'min:5',//最低
+                'max:40',//最高
+                'unique:users,email',//登録ずみ不可
+            ],
+            'Password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:20',
+                'regex:/^[a-zA-Z0-9]+$/', // 英数字のみ
+                'password' => 'confirmed:password',  // password_confirmation と一致しているか
+            ],
+            'bio' =>[
+                'max:150'
+            ]
+        ]);
+
+        User::where('id',$id)->update([
+            'username' => $username,
+            'email' => $email,
+            'password' => Hash::make($request->input('password')),
+            'bio' =>$bio,
+        ]);
+        return redirect('/top');
     }
 }
