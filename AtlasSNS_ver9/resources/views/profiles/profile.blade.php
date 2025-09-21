@@ -5,11 +5,12 @@
 <div class="container">
     {{-- ユーザー情報 --}}
     <div class="mb-4">
+
        <img src="{{ asset('images/' . $user->icon_image) }}"
      alt="{{ $user->username }}"
      class="MyIcon">
         <h3>{{ $user->username }}</h3>
-        <h4>自己紹介</h4>
+        <h4>{{ $user->bio }}</h4>
 
           @csrf
     <input type="hidden" name="user_id" value="{{ $user->username }}">
@@ -26,6 +27,7 @@
              <button type="submit" class="btn-primary"> フォローする</button>
         </form>
         @endif
+
 </td>
         </tr>
 
@@ -48,6 +50,7 @@
         </div>
     @endforeach
 </div>
+
 
 <div class="update">
   {!! Form::open(['url' => '/profile/update']) !!}

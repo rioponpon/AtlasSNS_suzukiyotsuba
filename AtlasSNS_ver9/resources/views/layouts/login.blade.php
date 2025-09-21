@@ -20,7 +20,7 @@
   <link rel="icon" href="画像URL" sizes="48x48" type="image/png" />
   <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
   <!--iphoneのアプリアイコン指定-->
-  <link rel="apple-touch-icon-precomposed" href="画像のURL" />
+  <link rel="apple-touch-icon-precomposed" href="{{ URL::to('/top') }}" />
   <!--OGPタグ/twitterカード-->
 </head>
 
@@ -29,7 +29,7 @@
     @include('layouts.navigation')
     <div id="head">
       <h1><a href="{{ URL::to('/top') }}">
-        <img src="{{ asset('/images/logo.png') }}" alt="Atlas">
+        <!-- <img src="{{ asset('/images/logo.png') }}" alt="Atlas"> -->
       </a>
     </h1>
     <div class="side_user">
@@ -40,7 +40,7 @@
 
 <ul class="menu">
 <li><a class="home" href="{{ URL::to('/top') }}">ホーム</a></li>
-<li><a class="profile" href="{{ URL::to('/profile') }}">プロフィール</a></li>
+<li><a class="profileUpdate" href="{{ URL::to('/profile') }}">プロフィール</a></li>
 <li><a class="center" href="/logout">ログアウト</a></li>
 </ul>
 </div>
@@ -57,16 +57,17 @@
       <div id="confirm">
         <p>{{Auth::user()->username}}さんの</p>
         <div>
-          <p>フォロー数</p>
-          <p>{{Auth::user()->follows()->where('following_id',Auth::user()->id)->count()}}名</p>
+          <p>フォロー数
+         {{Auth::user()->follows()->where('following_id',Auth::user()->id)->count()}}名</p>
         </div>
         <p class="btn"><a href="{{ URL::to('/follow-list') }}">フォローリスト</a></p>
         <div>
-          <p>フォロワー数</p>
-          <p>{{Auth::user()->follows()->where('followed_id',Auth::user()->id)->count()}}名</p>
+          <p>フォロワー数
+          {{Auth::user()->follows()->where('followed_id',Auth::user()->id)->count()}}名</p>
         </div>
         <p class="btn"><a href="{{ URL::to('/follower-list') }}">フォロワーリスト</a></p>
       </div>
+      <div class ="search">
       <p class="btn"><a href="{{ URL::to('/search') }}">ユーザー検索</a></p>
     </div>
   </div>

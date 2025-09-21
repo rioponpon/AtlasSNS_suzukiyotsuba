@@ -1,8 +1,10 @@
         <div id="head">
-            <h1><a href="../index.blade.php"><img src="images/atlas.png"></a></h1>
+            <h1><a href="{{ URL::to('/top') }}"><img src="images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>{{Auth::user()->username}}さん</p>
+                    <div class="name">{{Auth::user()->username}}さん</div>
+                    <img class="icon">{{Auth::user()->icon_image}}</img>
+
                 </div>
 
             </div>

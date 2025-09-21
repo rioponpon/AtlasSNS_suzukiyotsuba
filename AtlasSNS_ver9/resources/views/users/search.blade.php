@@ -22,9 +22,13 @@
         <td>{{{ $user->username }}}
 </td>
         <td>
-
+<div class="user">
     @csrf
+    <img src="{{ asset('images/' . $user->icon_image) }}"
+     alt="{{ $user->username }}"
+     class="userIcon">
     <input type="hidden" name="user_id" value="{{ $user->username }}">
+
         @if (auth()->user()->isFollowing($user->id))
         <form action="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">
 @csrf
@@ -38,9 +42,11 @@
              <button type="submit" class="btn-primary"> フォローする</button>
         </form>
         @endif
+        </div>
 </td>
         </tr>
         @endif
+
 
 
          @endforeach

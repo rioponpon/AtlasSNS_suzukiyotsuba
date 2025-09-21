@@ -1652,7 +1652,10 @@ label {
 
 .small,
 small {
-  font-size: 85%
+  font-size: 85%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .mark,

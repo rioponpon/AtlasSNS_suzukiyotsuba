@@ -1,8 +1,8 @@
 <x-login-layout>
 
 
-  <h2>機能を実装していきましょう。</h2>
-<div class="container">
+  <!-- <h2>機能を実装していきましょう。</h2> -->
+<div class="post-form">
 
 {!! Form::open(['url' => '/top'])!!}
 {{Form::token() }}
@@ -14,18 +14,17 @@
     'maxlength' => '150'
     ])}}
 </div>
-<button type="submit" class="btn btn-success pull-right"><img class="Upload"src="images/post.png" alt="送信"></button>
+<button type="submit" class="Upload"><img class="Upload"src="images/post.png" alt="送信"></button>
 {!! Form::close()!!}
 </div>
 
 {{-- 投稿一覧 --}}
 <div class ="mt-5">
-  <h3>投稿一覧</h3>
+
   @foreach ($posts as $post)
   <div class="card mb-3">
 <div class="card-body">
-  <p>{{ $post->post }}</p>
-  <small>投稿日: {{ $post->created_at->format('Y-m-d H:i') }}</small>
+
     <!-- ユーザーのアイコン !-->
     <div class="post-cell">
       @if($post->user->icon_image === 'icon1.png')
@@ -36,6 +35,11 @@
      <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
     alt="{{ $post->user->username }}">
     @endif
+  </div>
+  <div class="post-group">
+    <div class="post-name">{{ $post->user->username }}</div>
+      <div class="post">{{ $post->post }}</div>
+  <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
   </div>
 
 

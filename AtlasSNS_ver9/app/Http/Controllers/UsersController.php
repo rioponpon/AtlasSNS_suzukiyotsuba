@@ -113,10 +113,12 @@ class UsersController extends Controller
     }
 
     public function profile($id){
+        $user = User::findOrFail($id);
         $posts = $user->posts()->orderBy('created_at','desc')->get();
 
         return view('profiles.profile',compact('user','posts'));
     }
+
     public function profileUpdate(Request $request)
     {
         $id = $request->input('id');
