@@ -39,8 +39,8 @@
 
 
 <ul class="menu">
-<li><a class="home" href="{{ URL::to('/top') }}">ホーム</a></li>
-<li><a class="profileUpdate" href="{{ URL::to('/profile') }}">プロフィール</a></li>
+<li><a class="home" href="{{ URL::to('/top') }}">HOME</a></li>
+<li><a class="profileUpdate" href="{{ URL::to('/profile/update') }}">プロフィール編集</a></li>
 <li><a class="center" href="/logout">ログアウト</a></li>
 </ul>
 </div>

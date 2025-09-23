@@ -3,7 +3,7 @@
 <form action="/search" method="get">
             <input type="search" name="search" placeholder="ユーザー名を入力" value="@if (isset($search)) {{ $search }} @endif">
 
-            <img class="search" src="./images/search.png." alt="検索" />
+            <img class="pp" src="./images/search.png" alt="検索" />
         </form>
 
         <!-- 検索ワードを表示 -->

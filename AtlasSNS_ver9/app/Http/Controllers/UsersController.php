@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\register;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\validation\Rule;
 
 class UsersController extends Controller
 {
@@ -135,9 +136,9 @@ class UsersController extends Controller
                 'mail_address' => 'email',//メールアドレス形式
                 'min:5',//最低
                 'max:40',//最高
-                'unique:users,email',//登録ずみ不可
+                Rule::unique('users' ,'email')->ignore(auth()->id()),//登録ずみ不可、自分のみ重複許可
             ],
-            'Password' => [
+            'password' => [
                 'required',
                 'string',
                 'min:8',
@@ -148,6 +149,7 @@ class UsersController extends Controller
             'bio' =>[
                 'max:150'
             ]
+
         ]);
 
         User::where('id',$id)->update([
