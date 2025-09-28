@@ -1,10 +1,11 @@
 <x-login-layout>
-
-<form action="/search" method="get">
-            <input type="search" name="search" placeholder="ユーザー名を入力" value="@if (isset($search)) {{ $search }} @endif">
+<div class=form-search>
+<form action="/search" method="get" class="search-form">
+            <input type="search" name="search" placeholder="ユーザー名を入力" value="@if (isset($search)) {{ $search }} @endif" class="search-input">
 
             <img class="pp" src="./images/search.png" alt="検索" />
         </form>
+        </div>
 
         <!-- 検索ワードを表示 -->
          <!-- if (!empty($keyword))
@@ -15,36 +16,36 @@
          @foreach($users as $user)
 
          @if(isset($user)and!(Auth::user()==$user))
-         <tr>
 
-        <td><img src="{{ $user->images }}"><td>
-        </td>
-        <td>{{{ $user->username }}}
-</td>
-        <td>
-<div class="user">
+    <div class="user">
+
     @csrf
+    <div class="post-image">
     <img src="{{ asset('images/' . $user->icon_image) }}"
      alt="{{ $user->username }}"
      class="userIcon">
-    <input type="hidden" name="user_id" value="{{ $user->username }}">
 
+     <span class="user-name">
+  {{ $user->username }}
+    </span>
+  </div>
+
+  <div class="user-action">
         @if (auth()->user()->isFollowing($user->id))
-        <form action="{{ route('unfollow',[$user->id]) }}" class="btn unfollow_btn">
+        <form action="{{ route('unfollow',[$user->id]) }}" class="unfollow_btn">
 @csrf
-        <button type="submit" class="btn-primary">フォロー解除</button>
+        <button type="submit" class="btn-unfollow">フォロー解除</button>
         </form>
 
         @else
 
-        <form action="{{ route('follow' ,[$user->id]) }}" class="btn follow_btn">
+        <form action="{{ route('follow' ,[$user->id]) }}" class="follow_btn">
             @csrf
              <button type="submit" class="btn-primary"> フォローする</button>
         </form>
         @endif
         </div>
-</td>
-        </tr>
+</div>
         @endif
 
 

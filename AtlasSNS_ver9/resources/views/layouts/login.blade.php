@@ -35,16 +35,18 @@
     <div class="side_user">
       <div id="accordion" class="accordion_container">
         <div class="accordion-title js-accordion-title">
+          <div class="arrow-bottom">
 
 
 
 <ul class="menu">
 <li><a class="home" href="{{ URL::to('/top') }}">HOME</a></li>
-<li><a class="profileUpdate" href="{{ URL::to('/profile/update') }}">プロフィール編集</a></li>
+<li><a class="profileUpdate" href="{{ URL::to('/profile/' . Auth::user()->id .'/update-form') }}">プロフィール編集</a></li>
 <li><a class="center" href="/logout">ログアウト</a></li>
 </ul>
 </div>
       </div>
+    </div>
     </div>
     </div>
   </header>
@@ -56,19 +58,19 @@
     <div id="side-bar">
       <div id="confirm">
         <p>{{Auth::user()->username}}さんの</p>
-        <div>
+        <div class="follows">
           <p>フォロー数
          {{Auth::user()->follows()->where('following_id',Auth::user()->id)->count()}}名</p>
         </div>
-        <p class="btn"><a href="{{ URL::to('/follow-list') }}">フォローリスト</a></p>
-        <div>
+       <a href="{{ URL::to('/follow-list') }}" class="btn follow-list">フォローリスト</a>
+        <div class="followers">
           <p>フォロワー数
           {{Auth::user()->follows()->where('followed_id',Auth::user()->id)->count()}}名</p>
         </div>
-        <p class="btn"><a href="{{ URL::to('/follower-list') }}">フォロワーリスト</a></p>
+   <a href="{{ URL::to('/follower-list') }}" class="btn follower-list">フォロワーリスト</a>
       </div>
       <div class ="search">
-      <p class="btn"><a href="{{ URL::to('/search') }}">ユーザー検索</a></p>
+      <a href="{{ URL::to('/search') }}" class="btn user-search">ユーザー検索</a>
     </div>
   </div>
   <footer>

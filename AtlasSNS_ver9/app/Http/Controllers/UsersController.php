@@ -9,6 +9,7 @@ use App\Models\register;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -120,7 +121,7 @@ class UsersController extends Controller
         return view('profiles.profile',compact('user','posts'));
     }
 
-    public function profileUpdate(Request $request)
+    public function updateProfile(Request $request)
     {
         $id = $request->input('id');
         $username = $request->input('username');
@@ -159,5 +160,13 @@ class UsersController extends Controller
             'bio' =>$bio,
         ]);
         return redirect('/top');
+    }
+
+
+     public function profileUpdate(){
+        $user = Auth::user();
+
+
+        return view('profiles.update',compact('user'));
     }
 }

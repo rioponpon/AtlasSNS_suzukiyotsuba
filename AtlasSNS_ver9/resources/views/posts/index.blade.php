@@ -4,6 +4,8 @@
   <!-- <h2>機能を実装していきましょう。</h2> -->
 <div class="post-form">
 
+
+
 {!! Form::open(['url' => '/top'])!!}
 {{Form::token() }}
 <div class="from-group">
@@ -75,8 +77,13 @@
     <form action="/post/update" method="post">
       <textarea name="upPost" class="modal_post"></textarea>
       <input type="hidden" name="id" class="modal_id" value="{{ $post->id }}">
-      <img class="submit" src="./images/edit.png" alt="更新">
+
       {{ csrf_field() }}
+      <div class ="modal_footer">
+      <button type="submit" class="submit-btn">
+      <img class="submit" src="./images/edit.png" alt="更新">
+      </button>
+      </div>
     </form>
 
   </div>

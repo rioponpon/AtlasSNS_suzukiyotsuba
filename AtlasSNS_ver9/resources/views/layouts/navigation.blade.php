@@ -1,9 +1,9 @@
         <div id="head">
-            <h1><a href="{{ URL::to('/top') }}"><img src="images/atlas.png"></a></h1>
+            <div class="atlas"><a href="{{ URL::to('/top') }}"><img src="{{asset('images/atlas.png')}}" class="atlas-png"></a></div>
             <div id="">
                 <div id="">
                     <div class="name">{{Auth::user()->username}}さん</div>
-                    <img class="icon">{{Auth::user()->icon_image}}</img>
+                    <img class="icon" src="{{ asset('images/' . Auth::user()->icon_image) }}">
 
                 </div>
 

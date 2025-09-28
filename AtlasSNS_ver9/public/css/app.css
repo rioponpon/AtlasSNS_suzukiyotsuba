@@ -1422,12 +1422,22 @@ body {
 }
 
 button,
-input,
 select,
 textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit
+}
+
+input {
+  width: 100;
+  padding: 10px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+
+
 }
 
 a {
@@ -1597,25 +1607,18 @@ h6 small {
   font-size: 75%
 }
 
-.h1,
-h1 {
+.h1 {
   font-size: 36px
 }
 
+
+
 .h2,
 h2 {
-  font-size: 30px
+  font-size: 20px
 }
 
-.h3,
-h3 {
-  font-size: 24px
-}
 
-.h4,
-h4 {
-  font-size: 18px
-}
 
 .h5,
 h5 {
@@ -3276,8 +3279,11 @@ legend {
 }
 
 label {
-  display: inline-block;
-  margin-bottom: 5px
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+  font-weight: bold;
+
 }
 
 input[type=search] {
@@ -4007,8 +4013,9 @@ fieldset[disabled] .btn-default:hover {
 
 .btn-primary {
   color: #fff;
-  background-color: #3097D1;
-  border-color: #2a88bd
+  background-color: #186AC9;
+  border-color: #186AC9;
+  border-radius: 10%;
 }
 
 .btn-primary.focus,
