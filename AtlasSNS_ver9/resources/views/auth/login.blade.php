@@ -19,7 +19,9 @@
   {{ Form::submit('ログイン') }}
   </div>
 
+  <div class="cc">
   <p><a href="/register">新規ユーザーの方はこちら</a></p>
+  </div>
 </div>
   {!! Form::close() !!}
 

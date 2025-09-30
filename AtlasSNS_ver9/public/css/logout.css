@@ -38,8 +38,12 @@ body {
     color: #fff;
 }
 
-.register-btn {
+.register-btn input {
     color: white;
+    background-color: red;
+    border: none;
+    position: relative;
+    left: 60px;
 }
 
 .login {
@@ -53,12 +57,24 @@ body {
 
 }
 
-.submit {
+.login-btn input {
     color: white;
     background-color: red;
+    border: none;
+    position: relative;
+    left: 60px;
 }
 
-a {
+
+.cc {
     color: white;
     text-decoration: underline;
 }
+
+/* .login-btn {
+
+    position: relative;
+    left: 60px;
+    color: #fff;
+    background-color: red;
+} */

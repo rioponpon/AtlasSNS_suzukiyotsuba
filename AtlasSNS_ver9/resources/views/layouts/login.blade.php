@@ -27,28 +27,7 @@
 <body>
   <header>
     @include('layouts.navigation')
-    <div id="head">
-      <h1><a href="{{ URL::to('/top') }}">
-        <!-- <img src="{{ asset('/images/logo.png') }}" alt="Atlas"> -->
-      </a>
-    </h1>
-    <div class="side_user">
-      <div id="accordion" class="accordion_container">
-        <div class="accordion-title js-accordion-title">
-          <div class="arrow-bottom">
 
-
-
-<ul class="menu">
-<li><a class="home" href="{{ URL::to('/top') }}">HOME</a></li>
-<li><a class="profileUpdate" href="{{ URL::to('/profile/' . Auth::user()->id .'/update-form') }}">プロフィール編集</a></li>
-<li><a class="center" href="/logout">ログアウト</a></li>
-</ul>
-</div>
-      </div>
-    </div>
-    </div>
-    </div>
   </header>
   <!-- Page Content -->
   <div id="row">
@@ -57,6 +36,7 @@
     </div>
     <div id="side-bar">
       <div id="confirm">
+
         <p>{{Auth::user()->username}}さんの</p>
         <div class="follows">
           <p>フォロー数
@@ -69,10 +49,13 @@
         </div>
    <a href="{{ URL::to('/follower-list') }}" class="btn follower-list">フォロワーリスト</a>
       </div>
+
       <div class ="search">
       <a href="{{ URL::to('/search') }}" class="btn user-search">ユーザー検索</a>
     </div>
+
   </div>
+</div>
   <footer>
   </footer>
   <script src="{{ asset('js/app.js') }}"></script>

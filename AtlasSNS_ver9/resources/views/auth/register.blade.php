@@ -50,8 +50,9 @@
 {{ Form::submit('新規登録') }}
 </div>
 
-
+ <div class="cc">
 <p><a href="login">ログイン画面へ戻る</a></p>
+</div>
 
 {!! Form::close() !!}
 
