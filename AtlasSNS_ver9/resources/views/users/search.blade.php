@@ -2,8 +2,8 @@
 <div class=form-search>
 <form action="/search" method="get" class="search-form">
             <input type="search" name="search" placeholder="ユーザー名を入力" value="@if (isset($search)) {{ $search }} @endif" class="search-input">
+            <input type="image" src="./images/search.png" alt="検索" class="pp">
 
-            <img class="pp" src="./images/search.png" alt="検索" />
         </form>
         </div>
 

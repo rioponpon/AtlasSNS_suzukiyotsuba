@@ -29,10 +29,11 @@
 
     <!-- ユーザーのアイコン !-->
     <div class="post-cell">
+
       @if($post->user->icon_image === 'icon1.png')
       {{-- デフォルトアイコン(public/images/icon1.png) --}}
       <img class ="MyIcon"src="{{ asset('images/icon1.png') }}"
-    alt="{{ $post->user->username }}">
+    alt="no image">
     @else
      <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
     alt="{{ $post->user->username }}">
@@ -48,9 +49,9 @@
   <!--編集-->
   @if(Auth::id() ==$post->user_id)
   <div class="update-btn">
-    <!-- <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}"> -->
+    <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}" class="modal_open">
       <img class="Update" src="./images/edit.png" alt="編集" />
-  <!-- </a> -->
+  </a>
   </div>
   @else
   <td class="post-cell"></td>
@@ -75,7 +76,7 @@
   <div class="modal_bg js-modal-close"></div>
   <div class="modal_content">
     <form action="/post/update" method="post">
-      <textarea name="upPost" class="modal_post"></textarea>
+      <textarea name="upPost" class="modal_post">{{ $post->post }}</textarea>
       <input type="hidden" name="id" class="modal_id" value="{{ $post->id }}">
 
       {{ csrf_field() }}

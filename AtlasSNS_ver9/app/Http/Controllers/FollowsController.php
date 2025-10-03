@@ -86,17 +86,16 @@ return view('follows.followList', ['posts' => $posts, 'follows' => $follows]);
 
     }
 
-
-    public function followerList()
+public function followerList()
     {
         // フォローされているユーザーのidを取得
-       $follower_id = Auth::user()->follows()->pluck('following_id');
+       $follower_id = Auth::user()->followers()->pluck('following_id');
 
-         $follower = User::whereIn('id', $follower_id)->get();
+         $followers = User::whereIn('id', $follower_id)->get();
         // dd($following_id);
         $posts = Post::with('user')->whereIn('user_id',$follower_id)->latest()->get();
 
-return view('follows.followerList', ['posts' => $posts, 'followers' => $follower]);
+return view('follows.followerList', ['posts' => $posts, 'followers' => $followers]);
 
     }
 

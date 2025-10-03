@@ -11,7 +11,13 @@ class PostsController extends Controller
 {
     //
     public function index(){
-        $posts=Post::get();
+        $user = auth()->user();
+
+        $following_id= $user->followings()->pluck('users.id')->toArray();
+        $id = array_merge($following_id,[$user->id]);
+        $posts=Post::whereIn('user_id',$id)
+        ->orderBy('created_at','desc')
+        ->get();
         return view('posts.index',['posts'=>$posts]);
     }
 

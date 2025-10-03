@@ -41,18 +41,19 @@ class UsersController extends Controller
                 'string',
                 'min:8',
                 'max:20',
-                'regex:/^[a-zA-Z0-9]+$/', // 英数字のみ
+                'regex:/^[A-Za-z0-9]+$/', // 英数字のみ
                 'password' => 'confirmed:password',  // password_confirmation と一致しているか
             ],
         ]);
-        User::create([
+      User::create([
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'Password' => Hash::make($request->input('password')),
         ]);
-
+Auth::login($user);
         // return request()=>route(request.)
         return back();
+        // return redirect()->route('added');
     }
 
 //     public function search(){
@@ -105,6 +106,22 @@ class UsersController extends Controller
         // dd($following_id);
         return view('/follows/followList' , ['followings' => $followings]);
     }
+
+    public function followerList()
+    {
+        // フォローされているユーザーのidを取得
+       $follower_id = Auth::user()->followers()
+       ->where('id','!=', Auth::id())
+       ->pluck('following_id');
+
+         $followers = User::whereIn('id', $follower_id)->get();
+        // dd($following_id);
+        $posts = Post::with('user')->whereIn('user_id',$follower_id)->latest()->get();
+
+return view('follows.followerList', ['posts' => $posts, 'followers' => $follower]);
+
+    }
+
 
    public function show($id){
        $user = User::findOrFail($id);

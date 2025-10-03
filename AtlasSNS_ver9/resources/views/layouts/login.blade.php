@@ -50,8 +50,10 @@
    <a href="{{ URL::to('/follower-list') }}" class="btn follower-list">フォロワーリスト</a>
       </div>
 
+<div class="side">
       <div class ="search">
       <a href="{{ URL::to('/search') }}" class="btn user-search">ユーザー検索</a>
+    </div>
     </div>
 
   </div>

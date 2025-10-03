@@ -13,7 +13,7 @@ jQuery(function ($) {
   });
 
 
-  $('.update-btn').on('click', function () {
+  $('.modal_open').on('click', function () {
     $('.modal').toggleClass('open', 200);
   });
 

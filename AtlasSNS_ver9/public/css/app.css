@@ -1430,19 +1430,25 @@ textarea {
 }
 
 input {
-  width: 100;
+  width: 230px;
   padding: 7px;
   margin-top: 3px;
   margin-bottom: 5px;
   border-radius: 5px;
-
+  border: 1px solid gray;
+  color: #000;
 
 
 }
 
 a {
   color: white;
-  text-decoration: none
+  text-decoration: none;
+  position: relative;
+  top: 15px;
+
+
+
 }
 
 a:focus,

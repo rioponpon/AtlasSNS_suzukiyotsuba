@@ -1,5 +1,5 @@
 <x-login-layout>
-  @if($errors->any())
+  <!-- @if($errors->any())
         <div class="alert alert-danger">
           <ul>
             @foreach($errors->all() as $error)
@@ -7,7 +7,7 @@
             @endforeach
           </ul>
         </div>
-    @endif
+    @endif -->
 
 <div class="update">
   {!! Form::open(['url' => '/profile/update','method' => 'get']) !!}

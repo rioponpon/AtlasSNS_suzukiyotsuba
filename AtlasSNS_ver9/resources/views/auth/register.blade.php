@@ -28,6 +28,7 @@
     'minlength' => 5,
     'maxlength' => 40,
     'email' => 'email:rfc,dns',
+    'placeholder' => 'メールアドレス',
     ]) }}
 </div>
 <div class ="form-group">
