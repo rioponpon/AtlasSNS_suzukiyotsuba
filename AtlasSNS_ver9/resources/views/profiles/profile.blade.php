@@ -15,7 +15,7 @@
         <p><span class="mi">自己紹介</span><span class="value">{{ $user->bio }}</span></P>
         </div>
 
-
+<div class="bo">
           @csrf
     <input type="hidden" name="user_id" value="{{ $user->username }}">
         @if (auth()->user()->isFollowing($user->id))
@@ -34,7 +34,7 @@
 
 </td>
         </tr>
-
+</div>
     </div>
 
     {{-- 投稿一覧 --}}

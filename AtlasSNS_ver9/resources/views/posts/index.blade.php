@@ -35,7 +35,7 @@
       <img class ="MyIcon"src="{{ asset('images/icon1.png') }}"
     alt="no image">
     @else
-     <img class="MyIcon" src="{{ asset('storage/user-images/'. $post->user->images) }}"
+     <img class="MyIcon" src="{{ asset('storage/public/'. $post->user->images) }}"
     alt="{{ $post->user->username }}">
     @endif
   </div>
@@ -76,8 +76,8 @@
   <div class="modal_bg js-modal-close"></div>
   <div class="modal_content">
     <form action="/post/update" method="post">
-      <textarea name="upPost" class="modal_post">{{ $post->post }}</textarea>
-      <input type="hidden" name="id" class="modal_id" value="{{ $post->id }}">
+      <textarea name="upPost" class="modal_post"></textarea>
+      <input type="hidden" name="id" class="modal_id" value="">
 
       {{ csrf_field() }}
       <div class ="modal_footer">

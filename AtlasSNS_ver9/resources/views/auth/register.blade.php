@@ -30,6 +30,11 @@
     'email' => 'email:rfc,dns',
     'placeholder' => 'メールアドレス',
     ]) }}
+    @if ($errors->has('email'))
+    <div class="error-message">
+        {{ $errors->first('email') }}
+    </div>
+    @endif
 </div>
 <div class ="form-group">
 {{ Form::label('パスワード') }}
@@ -52,7 +57,7 @@
 </div>
 
  <div class="cc">
-<p><a href="login">ログイン画面へ戻る</a></p>
+<p><a href="login" class="aaa">ログイン画面へ戻る</a></p>
 </div>
 
 {!! Form::close() !!}

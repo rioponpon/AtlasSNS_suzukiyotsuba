@@ -13,8 +13,17 @@ jQuery(function ($) {
   });
 
 
-  $('.modal_open').on('click', function () {
+  $('.modal_open').on('click', function (e) {
+    // var text = $(this).attr('post');
+    // var id = $(this).attr('post_id');
+    // $('.modal_post').val(text);
+    // $('.modal_id').val(id);
+    e.preventDefault();
     $('.modal').toggleClass('open', 200);
+    var text = $(this).attr('post');
+    var id = $(this).attr('post_id');
+    $('.modal_post').val(text);
+    $('.modal_id').val(id);
   });
 
 });

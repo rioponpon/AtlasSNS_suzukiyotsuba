@@ -7987,3 +7987,28 @@ button.close {
     display: none !important
   }
 }
+
+.message {
+  width: 250px;
+  height: 230px;
+  margin: 70px auto;
+  padding-top: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  line-height: 1.2;
+
+}
+
+.massage_ {
+  padding: 20px;
+}
+
+.login_btn a {
+  color: white;
+  background-color: red;
+  border: none;
+  padding: 5px;
+  border-radius: 15%;
+}

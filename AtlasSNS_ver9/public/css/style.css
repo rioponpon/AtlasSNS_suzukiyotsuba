@@ -410,7 +410,8 @@ header {
 
 .Update {
     height: 35px;
-    top: 10px;
+    position: relative;
+    bottom: 10px;
     margin-left: 50px;
     display: flex;
     align-items: center;
@@ -609,6 +610,11 @@ h1 {
 .value {
     margin-left: 40px;
 
+}
+
+.bo {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .myIcon {

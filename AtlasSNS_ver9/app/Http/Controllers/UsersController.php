@@ -41,7 +41,7 @@ class UsersController extends Controller
                 'string',
                 'min:8',
                 'max:20',
-                'regex:/^[A-Za-z0-9]+$/', // 英数字のみ
+                'alpha_num', // 英数字のみ
                 'password' => 'confirmed:password',  // password_confirmation と一致しているか
             ],
         ]);
@@ -145,6 +145,7 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
         $email = $request->input('email');
         $password =$request->input('password');
         $bio =$request->input('bio');
+        $image=$request->image->store('storage/public/');
         // dd($id,$username,$mail);
 
        $request->validate([
@@ -166,7 +167,8 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
             ],
             'bio' =>[
                 'max:150'
-            ]
+            ],
+            'image' =>['image|mimes:jpeg,png,jpg,gif']
 
         ]);
 
@@ -175,6 +177,7 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
             'email' => $email,
             'password' => Hash::make($request->input('password')),
             'bio' =>$bio,
+            'image'=>basement($image)
         ]);
         return redirect('/top');
     }

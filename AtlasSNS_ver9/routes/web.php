@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/top', [PostsController::class, 'index']);
 
- Route::get('/added', function (){return auth('added');})->name('added');
+Route::get('/added', function (){return view('auth.added');})->name('added');
 
 Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
 
@@ -57,7 +57,7 @@ Route::get('/follower-list', [FollowsController::class, 'followerList']);
 Route::get('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');
 Route::get('/unfollow/{user}', [FollowsController::class, 'unfollow'])->name('unfollow');
 
-Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
+// Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
 
 
 Route::get('/top', [PostsController::class, 'index'])->name('posts.index');

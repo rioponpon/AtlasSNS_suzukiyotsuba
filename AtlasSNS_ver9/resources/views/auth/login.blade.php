@@ -20,7 +20,7 @@
   </div>
 
   <div class="cc">
-  <p><a href="/register">新規ユーザーの方はこちら</a></p>
+  <p><a href="/register" class="aaa">新規ユーザーの方はこちら</a></p>
   </div>
 </div>
   {!! Form::close() !!}

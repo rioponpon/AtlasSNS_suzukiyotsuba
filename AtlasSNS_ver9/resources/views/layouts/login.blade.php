@@ -45,7 +45,7 @@
        <a href="{{ URL::to('/follow-list') }}" class="btn follow-list">フォローリスト</a>
         <div class="followers">
           <p>フォロワー数
-          {{Auth::user()->follows()->where('followed_id',Auth::user()->id)->count()}}名</p>
+          {{Auth::user()->followers()->where('followed_id',Auth::user()->id)->count()}}名</p>
         </div>
    <a href="{{ URL::to('/follower-list') }}" class="btn follower-list">フォロワーリスト</a>
       </div>
