@@ -22,9 +22,11 @@
             </div>
         </div>
 
-        <img class="icon" src="{{ asset('images/' . Auth::user()->icon_image) }}">
-
-
+@if (!empty(Auth::user()->icon_image))
+ <img class="icon" src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}">
+ @else
+ <img class="icon" src="{{ asset('images/' . Auth::user()->icon_image) }}">
+ @endif
     </div>
 </div>
 
