@@ -140,7 +140,7 @@ sub {
 }
 
 img {
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 svg:not(:root) {

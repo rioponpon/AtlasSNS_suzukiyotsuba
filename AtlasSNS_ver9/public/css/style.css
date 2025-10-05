@@ -40,6 +40,12 @@ header {
 
 }
 
+.MYicon {
+    position: relative;
+    left: 60px;
+    width: 55px;
+    height: 55px;
+}
 
 
 .MyIcon {

@@ -66,7 +66,7 @@ Route::post('/top', [PostsController::class, 'postCreate'])->name('posts.create'
 
 Route::get('/profile/{id}/update-form', [UsersController::class, 'profileUpdate']);
 //編集処理
-Route::get('/profile/update', [UsersController::class, 'updateProfile']);
+Route::post('/profile/update', [UsersController::class, 'updateProfile']);
 
 
 Route::get('/post/{id}/update-form', [PostsController::class, 'updateForm']);

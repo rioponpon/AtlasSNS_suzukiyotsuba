@@ -10,7 +10,7 @@
     @endif -->
 
 <div class="update">
-  {!! Form::open(['url' => '/profile/update','method' => 'get']) !!}
+  {!! Form::open(['url' => '/profile/update','method' => 'post','enctype' => 'multipart/form-data']) !!}
   @csrf
   {{ Form::hidden('id',Auth::user()->id)}}
   <img class="Myicon" src="{{ asset('images/' . Auth::user()->icon_image) }}">

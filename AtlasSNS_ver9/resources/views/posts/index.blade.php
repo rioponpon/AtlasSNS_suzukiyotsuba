@@ -35,7 +35,7 @@
       <img class ="MyIcon"src="{{ asset('images/icon1.png') }}"
     alt="no image">
     @else
-     <img class="MyIcon" src="{{ asset('storage/public/'. $post->user->images) }}"
+     <img class="MYicon" src="{{ asset('storage/icons/'. $post->user->icon_image) }}"
     alt="{{ $post->user->username }}">
     @endif
   </div>

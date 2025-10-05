@@ -145,7 +145,7 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
         $email = $request->input('email');
         $password =$request->input('password');
         $bio =$request->input('bio');
-        $image=$request->image->store('storage/public/');
+        $image=$request->file('images')->store('icons','public');
         // dd($id,$username,$mail);
 
        $request->validate([
@@ -177,7 +177,7 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
             'email' => $email,
             'password' => Hash::make($request->input('password')),
             'bio' =>$bio,
-            'image'=>basement($image)
+            'icon_image'=>basename($image)
         ]);
         return redirect('/top');
     }
