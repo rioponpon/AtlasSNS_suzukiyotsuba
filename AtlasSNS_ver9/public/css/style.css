@@ -125,7 +125,7 @@ header {
     z-index: 1;
 }
 
-.menu li {
+.menu li a {
     border-bottom: 1px solid #ddd;
 }
 
@@ -133,7 +133,7 @@ header {
     display: block;
     height: 50px;
     line-height: 0px;
-    padding: 15px;
+    padding: 20px;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -624,6 +624,12 @@ h1 {
 .bo {
     display: flex;
     justify-content: flex-end;
+
+}
+
+.bo button {
+    position: relative;
+    bottom: 20px;
 }
 
 .myIcon {

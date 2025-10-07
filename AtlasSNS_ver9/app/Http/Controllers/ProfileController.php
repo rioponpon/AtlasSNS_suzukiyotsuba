@@ -17,7 +17,7 @@ class ProfileController extends Controller
     }
      public function index(){
         $posts=Post::get();
-        $posts = Post::with('user')->whereIn('user_id')->latest()->get();
+        $posts = Post::with('user')->whereIn('user_id')->orderBy('created_at','desc')->get();
         return view('posts.index',['posts'=>$posts]);
     }
 
