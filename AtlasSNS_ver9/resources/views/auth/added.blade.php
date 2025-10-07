@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
     <div class="message">
-    <p>{{Auth::user()->username}}さん</p>
+    @if (session('username'))
+    <p>{{ session('username') }}さん</p>
+    @endif
     <p>ようこそ！AtlasSNSへ！</p>
     <div class="massage_">
     <p>ユーザー登録が完了しました。</p>

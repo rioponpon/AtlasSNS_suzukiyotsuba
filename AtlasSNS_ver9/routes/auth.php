@@ -18,6 +18,6 @@ Route::middleware('guest')->group(function () {
     Route::get('added', [RegisteredUserController::class, 'added']);
     Route::post('added', [RegisteredUserController::class, 'added']);
     Route::get('/added', [RegisteredUserController::class, 'added'])->name('added');
-     Route::get('/added', function (){return auth('added');})->name('added');
+    //  Route::get('/added', function (){return auth('added');})->name('added');
 
 });
