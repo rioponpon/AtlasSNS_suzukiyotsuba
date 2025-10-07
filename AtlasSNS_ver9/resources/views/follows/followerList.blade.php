@@ -9,7 +9,8 @@
 
         @foreach ($followers as $follower)
     <div class="follow_icon">
-<img class="follow_icon" src="{{ asset('images/' .$follower->icon_image) }}">
+      <a href="{{route('users.show', $follower->id) }}">
+<img class="follow_icon" src="{{ asset('images/' .$follower->icon_image) }}"></a>
         <!-- <a><img src="{{ asset('storage/' .$follower->images) }}" alt="フォロワーアイコン"></a> -->
         @endforeach
 

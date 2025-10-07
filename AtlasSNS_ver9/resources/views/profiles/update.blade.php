@@ -13,7 +13,11 @@
   {!! Form::open(['url' => '/profile/update','method' => 'post','enctype' => 'multipart/form-data']) !!}
   @csrf
   {{ Form::hidden('id',Auth::user()->id)}}
-  <img class="Myicon" src="{{ asset('images/' . Auth::user()->icon_image) }}">
+  @if (!empty(Auth::user()->icon_image))
+ <img class="Myicon" src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}">
+ @else
+ <img class="Myicon" src="{{ asset('images/' . Auth::user()->icon_image) }}">
+ @endif
   <div class="update-form">
     <div class="update-block">
       <label for="name">ユーザー名</label>

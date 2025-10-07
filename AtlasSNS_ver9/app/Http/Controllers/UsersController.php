@@ -126,7 +126,7 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
    public function show($id){
        $user = User::findOrFail($id);
        $posts = $user->posts()->orderBy('created_at','desc')->get();
-    //    dd($user,$posts);
+       // dd($user,$posts);
 
        return view('profiles.profile',compact('user','posts'));
     }
@@ -145,7 +145,9 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
         $email = $request->input('email');
         $password =$request->input('password');
         $bio =$request->input('bio');
-        $image=$request->file('images')->store('icons','public');
+        $image = null;
+        if($request->hasFile('images')){
+            $image=$request->file('images')->store('icons','public');}
         // dd($id,$username,$mail);
 
        $request->validate([
@@ -168,17 +170,23 @@ return view('follows.followerList', ['posts' => $posts, 'followers' => $follower
             'bio' =>[
                 'max:150'
             ],
-            'image' =>['image|mimes:jpeg,png,jpg,gif']
+            'image' =>['nullable','image|mimes:jpeg,png,jpg,gif']
 
         ]);
 
-        User::where('id',$id)->update([
+        $updateData=[
             'username' => $username,
             'email' => $email,
             'password' => Hash::make($request->input('password')),
             'bio' =>$bio,
-            'icon_image'=>basename($image)
-        ]);
+        ];
+
+        if($request->hasFile('images')){
+            $image = $request->file('images')->store('icons','public');
+            $updateData['icon_image']=basename($image);
+        }
+
+        User::where('id',$id)->update($updateData);
         return redirect('/top');
     }
 

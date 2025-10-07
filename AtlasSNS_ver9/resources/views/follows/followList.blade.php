@@ -6,7 +6,8 @@
     <h1> フォローリスト </h1>
     <div class="follow_icon">
         @foreach ($follows as $following)
-        <img class="follow_icon" src="{{ asset('images/' .$following->icon_image) }}">
+         <a href="{{route('users.show', $following->id) }}">
+        <img class="follow_icon" src="{{ asset('images/' .$following->icon_image) }}"></a>
         <!-- <a><img src="{{ asset('storage/' .$following->images) }}" ></a> -->
         @endforeach
     </div>
