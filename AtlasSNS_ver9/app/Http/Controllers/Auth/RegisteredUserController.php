@@ -45,9 +45,25 @@ class RegisteredUserController extends Controller
                 'string',
                 'min:8',
                 'max:20',
-                'alpha_num', // 英数字のみ
+                'regex:/^[a-zA-Z0-9]+$/', // 英数字のみ
                 'password' => 'confirmed:password',  // password_confirmation と一致しているか
             ],
+        ],[
+ 'username.required' => 'ユーザー名は必須です。',
+        'username.min' => 'ユーザー名は2文字以上で入力してください。',
+        'username.max' => 'ユーザー名は12文字以内で入力してください。',
+
+        'email.required' => 'メールアドレスは必須です。',
+        'email.email' => '正しいメールアドレス形式で入力してください。',
+        'email.min' => 'メールアドレスは5文字以上で入力してください。',
+        'email.max' => 'メールアドレスは40文字以内で入力してください。',
+        'email.unique' => 'このメールアドレスはすでに登録されています。',
+  'password.required' => 'パスワードは必須です。',
+        'password.min' => 'パスワードは8文字以上で入力してください。',
+        'password.max' => 'パスワードは20文字以内で入力してください。',
+        'password.regex:/^[a-zA-Z0-9]+$/' => 'パスワードは半角英数字のみで入力してください。',
+        'password.confirmed' => 'パスワード確認が一致しません。',
+
              ]);
 
         User::create([
